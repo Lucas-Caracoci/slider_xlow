@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './imageSlider.css';
+import styles from './imageSlider.module.css';
 
 const ImageSlider = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -18,7 +18,7 @@ const ImageSlider = ({ images }) => {
   };
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 3000); // 3 segundos para rolagem automática
+    const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
   }, [currentIndex]);
 
@@ -27,34 +27,34 @@ const ImageSlider = ({ images }) => {
   }
 
   return (
-    <div className="slider">
-      <h1 className="title">Slider Desafio Xlow</h1>
+    <div className={styles.slider}>
+      <h1 className={styles.title}>Slider Desafio Xlow</h1>
       <div
-        className="slider-wrapper"
+        className={styles.sliderWrapper}
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {images.map((image, index) => (
           <div
-            className={`slide ${index === currentIndex ? 'active' : ''}`}
+            className={`${styles.slide} ${index === currentIndex ? styles.active : ''}`}
             key={index}
           >
-            <a href={image.link} target="_blank" rel="noopener noreferrer">
-              <img src={image.url} alt={image.alt} className="image" />
+            <a href={image.link} target="_blank" >
+              <img src={image.url} alt={image.alt} className={styles.image} />
             </a>
           </div>
         ))}
       </div>
-      <div className="left-arrow" onClick={prevSlide}>
+      <div className={styles.leftArrow} onClick={prevSlide}>
         &#8249;
       </div>
-      <div className="right-arrow" onClick={nextSlide}>
+      <div className={styles.rightArrow} onClick={nextSlide}>
         &#8250;
       </div>
-      <div className="dots">
+      <div className={styles.navigation}>
         {images.map((_, index) => (
           <span
             key={index}
-            className={`dot ${index === currentIndex ? 'active' : ''}`}
+            className={`${styles.dot} ${index === currentIndex ? styles.active : ''}`}
             onClick={() => goToSlide(index)}
           ></span>
         ))}
