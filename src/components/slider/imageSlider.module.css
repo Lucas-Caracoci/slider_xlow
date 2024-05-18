@@ -2,18 +2,8 @@
   position: relative;
   margin: auto;
   overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.651) 0px 20px 50px 10px;
 }
-
-.title {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 50px;
-  letter-spacing: 5px;
-  text-shadow: -1px -1px 3px #00aeda93, 
-      2px 2px 4px #00ff2a;
-}
-
-
 .sliderWrapper {
   display: flex;
   transition: transform 0.5s ease-in-out;
@@ -38,8 +28,8 @@
 .leftArrow,
 .rightArrow {
   position: absolute;
-  top: 55%;
-  transform: translateY(-55%);
+  top: 50%;
+  transform: translateY(-50%);
   background-color: #0000007e;
   color: #fff;
   font-size: 60px;
@@ -55,6 +45,13 @@
   justify-content: center;
   user-select: none;
   padding-bottom: 15px;
+  
+}
+.rightArrow{
+  animation: float 1s infinite alternate;
+}
+.leftArrow{
+  animation: float2 1s infinite alternate;
 }
 
 .leftArrow:hover,
@@ -144,4 +141,19 @@
   }
 }
 
-
+@keyframes float {
+  from{
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(5px);
+  }
+}
+@keyframes float2 {
+  from{
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-5px);
+  }
+}
