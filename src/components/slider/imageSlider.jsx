@@ -31,13 +31,11 @@ const ImageSlider = ({ images }) => {
       <h1 className={styles.title}>Slider Desafio Xlow</h1>
       <div
         className={styles.sliderWrapper}
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-      >
+        style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         {images.map((image, index) => (
           <div
             className={`${styles.slide} ${index === currentIndex ? styles.active : ''}`}
-            key={index}
-          >
+            key={index}>
             <a href={image.link} target="_blank" >
               <img src={image.url} alt={image.alt} className={styles.image} />
             </a>
@@ -55,8 +53,7 @@ const ImageSlider = ({ images }) => {
           <span
             key={index}
             className={`${styles.dot} ${index === currentIndex ? styles.active : ''}`}
-            onClick={() => goToSlide(index)}
-          ></span>
+            onClick={() => goToSlide(index)}></span>
         ))}
       </div>
     </div>
